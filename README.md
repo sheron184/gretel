@@ -1,2 +1,2 @@
 # gretel
-- A lightweight PHP web framework
+* A lightweight PHP web framework
