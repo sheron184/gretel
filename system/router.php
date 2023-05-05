@@ -8,19 +8,25 @@ namespace System;
 
 class Router {
 
-    public $protocol;
+    public string $protocol;
 
-    public $method;
+    public string $method;
 
-    public $domain;
+    public string $domain;
 
-    public $uri;
+    public string $uri;
 
-    public $full_uri;
+    public string $full_uri;
 
-    public $route;
+    public string $route;
+
+    public array $routes;
 
     public $callback;
+
+    public bool $dynamic;
+
+    public string $uri_dynamic;
 
     public function __construct($base_url, $routes)
     {
@@ -45,27 +51,77 @@ class Router {
          * 
          */
 
-        $this->callback = $routes[$this->route];
+         $this->routes = $routes;
+        //$this->callback = $routes[$this->route];
 
-        $this->boot();
+        $this->get_callback();
+
     }
 
     protected function boot()
     {
         if($this->method == "POST"){
-            
-            call_user_func(array( $this->callback[0], $this->callback[1] ), $_POST);
+
+            if($this->dynamic){
+
+                call_user_func(array(new $this->callback[0], $this->callback[1] ), $_POST, $this->uri_dynamic);
+
+            }else{
+
+                call_user_func(array(new $this->callback[0], $this->callback[1] ), $_POST);
+                
+            }
         
         }else if($this->method == "GET"){
 
-            call_user_func(array( $this->callback[0], $this->callback[1] ), $_GET);
+            if($this->dynamic){
+
+                call_user_func(array(new $this->callback[0], $this->callback[1] ), $_GET, $this->uri_dynamic);
+                
+            }else{
+
+                call_user_func(array(new $this->callback[0], $this->callback[1] ), $_GET);
+                
+            }
             
         }
         
     }
 
-    protected function callback()
+    protected function get_callback()
     {
+        
+
+        $routes_keys = array_keys($this->routes);
+        $routes_values = array_values($this->routes);
+        
+        foreach(array_keys($this->routes) as $route){
+
+            if(strpos($route, '{')){
+                $this->dynamic = true;
+
+                $route_partials = explode('/', $route);
+                $uri_partials = explode('/', $this->uri);
+
+                $route_dynamic = $route_partials[ count($route_partials) - 1 ];
+                $this->uri_dynamic = $uri_partials[ count($uri_partials) - 1 ];
+
+                $new_route = str_replace( $route_dynamic,''.$this->uri_dynamic.'', $route);
+
+                $routes_keys[array_search($route, $routes_keys)] = $new_route;
+
+                $this->routes = array_combine($routes_keys, $routes_values);
+            }
+
+        }
+
+        if(isset($this->routes[$this->route])){
+            $this->callback =  $this->routes[$this->route];
+        }
+
+        //var_dump($this->callback);
+
+        $this->boot();
 
     }
 }

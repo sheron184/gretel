@@ -6,7 +6,7 @@ namespace App;
  * - Set your base url of the system here. 
  */
 
-$base_url = "http://localhost/csquare";
+$base_url = "http://localhost/gretel";
 
 /**
  * - ROUTES
@@ -18,6 +18,7 @@ $base_url = "http://localhost/csquare";
 $routes = [
 
     '/' => [\App\Controllers\WelcomeController::class, 'index'],
-    '/home' => [\App\Controllers\WelcomeController::class, 'home']
+    '/home' => [\App\Controllers\WelcomeController::class, 'home'],
+    '/test/{id}' => [\App\Controllers\WelcomeController::class, 'test'],
 
 ];
