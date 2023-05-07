@@ -1,5 +1,6 @@
 <?php 
-
+namespace Config;
+use mysqli;
 class DB {
     
     public $hostname = "";
@@ -23,7 +24,11 @@ class DB {
 
     protected function boot(){
         $this->connection = new mysqli($this->hostname, $this->username, $this->password, $this->db_name);
-    } 
+    }
+    
+    public function conn(){
+        return $this->connection;
+    }
 
     
 }  

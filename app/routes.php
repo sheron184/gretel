@@ -20,5 +20,6 @@ $routes = [
     '/' => [\App\Controllers\WelcomeController::class, 'index'],
     '/home' => [\App\Controllers\WelcomeController::class, 'home'],
     '/test/{id}' => [\App\Controllers\WelcomeController::class, 'test'],
+    '/customer/create' => [\App\Controllers\CustomerController::class, 'index'],
 
 ];

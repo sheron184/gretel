@@ -5,5 +5,8 @@
             "Config\\":"config",
             "System\\": "system"
         }
+    },
+    "require": {
+        "illuminate/database": "^10.9"
     }
 }
