@@ -6,7 +6,7 @@ namespace App;
  * - Set your base url of the system here. 
  */
 
-$base_url = "http://localhost/gretel";
+$base_url = "http://localhost:5000";
 
 /**
  * - ROUTES
