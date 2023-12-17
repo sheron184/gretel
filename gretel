@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php 
+
+$dir = __DIR__;
+
+// Command to start the PHP built-in server
+$command = "php -S localhost:8000 -t $dir";
+
+// Execute the command
+exec($command);
