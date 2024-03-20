@@ -10,10 +10,18 @@ class WelcomeController extends Controller{
     }
 
     public function home($request){
-        include 'app/Views/home.php';
+        // $this->json([
+        //     "whaaaat" => "Hakuna Matata"
+        // ]);
+        //include 'app/Views/home.php';
+        $this->view('home');
     }
 
     public function test($request, $id){
         echo $id;
+    }
+
+    public function isi($request){
+        $this->view('test');
     }
 }

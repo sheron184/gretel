@@ -3,8 +3,19 @@
 
 $dir = __DIR__;
 
+// Get user defined port
+$options = getopt("", ["port::"]);
+
+// Default port
+$port = 8000; 
+
+// Checking for user defined port
+if(isset($options["port"])){
+	$port = $options["port"];
+}
+
 // Command to start the PHP built-in server
-$command = "php -S localhost:8000 -t $dir";
+$command = "php -S localhost:$port -t $dir";
 
 // Execute the command
 exec($command);
