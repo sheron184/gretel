@@ -1,6 +1,6 @@
 <?php
 
-namespace System;
+namespace System\Http;
 
 trait HttpResponse
 {
@@ -16,7 +16,7 @@ trait HttpResponse
 		$dir = __DIR__;
 		http_response_code(200);
 		header("Content-Type: text/html");
-		$html = file_get_contents(__DIR__ . '/../app/Views/'.$view.'.php');	
+		$html = file_get_contents(__DIR__ . '/../../app/Views/'.$view.'.php');	
 		echo $html;	
 	}
 }

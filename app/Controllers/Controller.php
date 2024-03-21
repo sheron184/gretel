@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use System\HttpResponse;
+use System\Http;
 
 abstract class Controller{
-    use HttpResponse;
-}
+    use Http\HttpResponse;
+} 
