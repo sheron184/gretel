@@ -10,7 +10,7 @@
     <title>Home</title>
   </head>
   <body>
-    indexxxx
+    <h2>Hello!</h2>
     <p><?php echo $name ?></p>
   </body>
 </html>
