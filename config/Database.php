@@ -1,7 +1,8 @@
 <?php 
 namespace Config;
 use mysqli;
-class DB {
+
+class Database {
     
     public $hostname = "";
     
@@ -29,6 +30,4 @@ class DB {
     public function conn(){
         return $this->connection;
     }
-
-    
 }  

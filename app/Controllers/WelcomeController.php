@@ -5,15 +5,19 @@ namespace App\Controllers;
 class WelcomeController extends Controller{
     
     public function index($request){
-        $name = "yeeee";
-        include 'app/Views/index.php';
+        $name = "Hakuna Matata!!";
+        $this->view('index', array('name' => $name));
     }
 
     public function home($request){
-        include 'app/Views/home.php';
+        return;
     }
 
     public function test($request, $id){
         echo $id;
+    }
+
+    public function isi($request){
+        $this->view('test');
     }
 }

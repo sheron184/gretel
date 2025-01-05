@@ -16,7 +16,7 @@ class CustomerController extends Controller{
             'district' => 'western', 
         ], new Customer());
 
-        header('location:/gretel/home ');
+        header('location:/gretel/home');
     }
 
     public function store($request){

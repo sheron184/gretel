@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Config\DB;
+use Config\Databse;
 use PDO;
 
 class Model {
@@ -17,7 +17,7 @@ class Model {
 
     public function __construct()
     {
-        $database = new DB();
+        $database = new Databse();
         $this->db = $database->conn();
         $this->main_model = $this;
 
