@@ -11,12 +11,12 @@ trait HttpResponse
 		echo json_encode($data);
 	}
 
-	public function view($view): void
+	public function view($view, $data = []): void
 	{
-		$dir = __DIR__;
+		extract($data);
 		http_response_code(200);
 		header("Content-Type: text/html");
-		$html = file_get_contents(__DIR__ . '/../../app/Views/'.$view.'.php');	
-		echo $html;	
+		$html = file_get_contents(__DIR__ . '/../../app/Views/'.$view.'.php');
+		eval('?>' . $html);
 	}
 }

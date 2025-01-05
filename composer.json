@@ -4,7 +4,7 @@
             "App\\":"app",
             "Config\\":"config",
             "System\\": "system",
-            "System\\Http": "system/http"
+            "System\\Http\\": "system/http"
         }
     },
     "require": {

@@ -5,16 +5,12 @@ namespace App\Controllers;
 class WelcomeController extends Controller{
     
     public function index($request){
-        $name = "yeeee";
-        include 'app/Views/index.php';
+        $name = "Hakuna Matata!!";
+        $this->view('index', array('name' => $name));
     }
 
     public function home($request){
-        // $this->json([
-        //     "whaaaat" => "Hakuna Matata"
-        // ]);
-        //include 'app/Views/home.php';
-        $this->view('home');
+        return;
     }
 
     public function test($request, $id){

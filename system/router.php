@@ -44,8 +44,8 @@ class Router {
          */
 
         $this->full_uri = $this->protocol . "://" . $this->domain . $this->uri;
-        $this->route = str_replace($base_url, "", $this->full_uri);
-        
+        $this->route = str_replace($base_url, "", $this->uri);
+
         /**
          * - Get callback class and method
          * 
@@ -64,7 +64,7 @@ class Router {
             }else{
                 call_user_func(array(new $this->callback[0], $this->callback[1] ), $_POST);
             }
-        }else if($this->method == "GET"){
+        }elseif($this->method == "GET"){
             if($this->dynamic){
                 call_user_func(array(new $this->callback[0], $this->callback[1] ), $_GET, $this->uri_dynamic);
             }else{
@@ -91,7 +91,6 @@ class Router {
                 $this->web_routes = array_combine($web_routes_keys, $web_routes_values);
             }
         }
-
         if(isset($this->web_routes[$this->route])){
             $this->callback =  $this->web_routes[$this->route];
         }
