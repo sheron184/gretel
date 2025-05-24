@@ -1,4 +1,6 @@
 <?php 
+require "./vendor/autoload.php";
+
 use System\Router;
 
 require './app/bootstrap.php';

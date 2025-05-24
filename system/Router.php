@@ -24,7 +24,7 @@ class Router {
 
     public $callback;
 
-    public bool $dynamic;
+    public bool $dynamic = false;
 
     public string $uri_dynamic;
 
